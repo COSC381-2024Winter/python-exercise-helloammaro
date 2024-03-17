@@ -1,9 +1,14 @@
 from movies import Movies
 
-movies = Movies('./movies.txt')
 def show_menu():
     print("Menu:")
+    print("Enter list to list all movies")
     print("q. Quit")
+
+def list_all_movies(movies):
+    print("Movie list:")
+    for idx, movie_name in enumerate(movies.list_movie_names(), start=1):
+        print(f"{idx}. {movie_name}")
 
 def main():
     movies = Movies('./movies.txt') 
@@ -15,8 +20,10 @@ def main():
         if choice == 'q':
             print("Exiting program...")
             break
+        elif choice == 'list':
+            list_all_movies(movies)
         else:
-            print("Invalid option.")
+            print("Invalid option. Enter again")
 
 if __name__ == "__main__":
     main()
